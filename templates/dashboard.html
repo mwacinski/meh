@@ -4,7 +4,6 @@
 <h1>Welcome to Your Dashboard, {{ username }}!</h1>
 
 <div class="container mt-5">
-    <!-- Add Movie Review Form -->
     <form method="POST" action="{{ url_for('dashboard.add_movie_review') }}" class="mb-4">
         <div class="form-group">
             <label for="title">Movie Title:</label>
@@ -16,8 +15,7 @@
         </div>
         <button type="submit" class="btn btn-primary">Add Movie Review</button>
     </form>
-
-    <!-- Movie Reviews List -->
+    
     <h2>Movie Reviews:</h2>
     <ul>
         {% for movie in movies %}
