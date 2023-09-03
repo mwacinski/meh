@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %} Dashboard {% endblock %}
+{% block content %}
+<h1>Welcome to Your Dashboard, {{ username }}!</h1>
+
+<div class="container mt-5">
+    <!-- Add Movie Review Form -->
+    <form method="POST" action="{{ url_for('dashboard.add_movie_review') }}" class="mb-4">
+        <div class="form-group">
+            <label for="title">Movie Title:</label>
+            <input type="text" id="title" name="title" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="content">Movie Review:</label>
+            <textarea id="content" name="content" class="form-control" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Movie Review</button>
+    </form>
+
+    <!-- Movie Reviews List -->
+    <h2>Movie Reviews:</h2>
+    <ul>
+        {% for movie in movies %}
+            <li>
+                <strong>{{ movie.name }}</strong>
+                <ul>
+                    {% for review in movie.reviews %}
+                        <li>{{ review.content }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
